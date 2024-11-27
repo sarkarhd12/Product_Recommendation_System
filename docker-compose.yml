@@ -1,0 +1,13 @@
+version: '3.8'  # Using a more compatible version of Docker Compose
+
+services:
+  web:
+    build: .
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: recommend_product
+    volumes:
+      - .:/recommend_product  # Ensure this matches the WORKDIR in your Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1  # Ensure logs are not buffered for better debugging
