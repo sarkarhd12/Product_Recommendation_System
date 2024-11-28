@@ -26,7 +26,8 @@ class User(models.Model):
         return self.username
 
 
-#Order model
+#Order model #There could be many more things in Order like order_status,quantity,delivery_address
+
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product)
